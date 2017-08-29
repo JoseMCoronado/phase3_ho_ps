@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record model="ir.ui.view" id="view_my_orders">
+      <field name="name">x_jos.my.sale.order.tree</field>
+      <field name="model">sale.order</field>
+      <field name="mode">primary</field>
+      <field name="type">tree</field>
+      <field name="inherit_id" eval="False"/>
+      <field name="arch" type="xml">
+          <tree string="My Sale Orders">
+            <field name="name"/>
+            <field name="confirmation_date"/>
+            <field name="requested_date" string="Est. Ship Date"/>
+            <field name="partner_id"/>
+            <field name="user_id"/>
+            <field name="amount_total"/>
+            <field name="invoice_status"/>
+            <field name="x_inv_pay_status"/>
+            <field name="x_transfer_status"/>
+            <field name="state" invisible="1"/>
+            <field name="x_state" invisible="1"/>
+          </tree>
+      </field>
+      <field name="priority">16</field>
+    </record>
+    <record model="ir.ui.view" id="view_my_completed_orders">
+      <field name="name">x_jos.my.completed.sale.order.tree</field>
+      <field name="model">sale.order</field>
+      <field name="mode">primary</field>
+      <field name="type">tree</field>
+      <field name="inherit_id" eval="False"/>
+      <field name="arch" type="xml">
+          <tree string="My Completed Sale Orders">
+            <field name="name"/>
+            <field name="partner_id"/>
+            <field name="requested_date" string="Est. Ship Date"/>
+            <!--???-->
+            <field name="user_id"/>
+            <field name="amount_total"/>
+            <field name="amount_untaxed" string="Subtotal"/>
+            <field name="x_inv_pay_status"/>
+            <field name="x_state"/>
+            <field name="state" invisible="1"/>
+          </tree>
+      </field>
+      <field name="priority">16</field>
+    </record>
+    <record model="ir.ui.view" id="view_my_orders_awaiting">
+      <field name="name">x_jos.my.sale.order.awaiting.tree</field>
+      <field name="model">sale.order</field>
+      <field name="mode">primary</field>
+      <field name="type">tree</field>
+      <field name="inherit_id" eval="False"/>
+      <field name="arch" type="xml">
+          <tree string="My Sale Orders Awaiting Approval">
+            <field name="name"/>
+            <field name="x_approval_date"/>
+            <field name="requested_date" string="Est. Ship Date"/>
+            <field name="x_last_ship"/>
+            <field name="x_purch_ready"/>
+            <field name="partner_id"/>
+            <field name="amount_total"/>
+            <field name="x_inv_pay_status"/>
+            <field name="state" invisible="1"/>
+            <field name="x_state" invisible="1"/>
+          </tree>
+      </field>
+      <field name="priority">16</field>
+    </record>
+  </data>
+</openerp>

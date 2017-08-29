@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record model="ir.ui.menu" id="menu_my_sales">
+      <field name="active" eval="True"/>
+      <field name="groups_id" eval="[(6, 0, [])]"/>
+      <field name="name">My Sales</field>
+      <field name="parent_id" ref="base.menu_base_partner"/>
+      <field name="sequence">4</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_window_my_orders">
+      <field name="auto_search" eval="True"/>
+      <field name="context">{}</field>
+      <field name="domain">[('user_id','=',uid)]</field>
+      <field name="groups_id" eval="[(6, 0, [])]"/>
+      <field name="limit">80</field>
+      <field name="name">My Sale Orders</field>
+      <field name="res_model">sale.order</field>
+      <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+      <field name="target">current</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_id" ref="phase3_ho_ps.view_my_orders"/>
+      <field name="view_ids" eval="[(6, 0, [])]"/>
+      <field name="view_mode">tree,form</field>
+      <field name="view_type">form</field>
+    </record>
+    <record model="ir.ui.menu" id="menu_my_orders">
+      <field name="action" ref="phase3_ho_ps.action_window_my_orders"/>
+      <field name="active" eval="True"/>
+      <field name="groups_id" eval="[(6, 0, [])]"/>
+      <field name="name">My Sale Orders</field>
+      <field name="parent_id" ref="phase3_ho_ps.menu_my_sales"/>
+      <field name="sequence">10</field>
+      <field name="web_icon" eval="False"/>
+    </record>
+    <record model="ir.actions.act_window" id="action_window_my_completed_orders">
+      <field name="auto_search" eval="True"/>
+      <field name="context">{}</field>
+      <field name="domain">[('user_id','=',uid),('state','in',['sale','done'])]</field>
+      <field name="groups_id" eval="[(6, 0, [])]"/>
+      <field name="limit">80</field>
+      <field name="name">My Completed Orders</field>
+      <field name="res_model">sale.order</field>
+      <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+      <field name="target">current</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_id" ref="phase3_ho_ps.view_my_completed_orders"/>
+      <field name="view_ids" eval="[(6, 0, [])]"/>
+      <field name="view_mode">tree,form</field>
+      <field name="view_type">form</field>
+    </record>
+    <record model="ir.ui.menu" id="menu_my_completed_orders">
+      <field name="action" ref="phase3_ho_ps.action_window_my_completed_orders"/>
+      <field name="active" eval="True"/>
+      <field name="groups_id" eval="[(6, 0, [])]"/>
+      <field name="name">My Completed Orders</field>
+      <field name="parent_id" ref="phase3_ho_ps.menu_my_sales"/>
+      <field name="sequence">20</field>
+      <field name="web_icon" eval="False"/>
+    </record>
+    <record model="ir.actions.act_window" id="action_window_my_awaiting_orders">
+      <field name="auto_search" eval="True"/>
+      <field name="context">{}</field>
+      <field name="domain">[('user_id','=',uid),('x_state','in',['awaiting'])]</field>
+      <field name="groups_id" eval="[(6, 0, [])]"/>
+      <field name="limit">80</field>
+      <field name="name">My Orders Awaiting Approval</field>
+      <field name="res_model">sale.order</field>
+      <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+      <field name="target">current</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_id" ref="phase3_ho_ps.view_my_orders_awaiting"/>
+      <field name="view_ids" eval="[(6, 0, [])]"/>
+      <field name="view_mode">tree,form</field>
+      <field name="view_type">form</field>
+    </record>
+    <record model="ir.ui.menu" id="menu_my_awaiting_orders">
+      <field name="action" ref="phase3_ho_ps.action_window_my_awaiting_orders"/>
+      <field name="active" eval="True"/>
+      <field name="groups_id" eval="[(6, 0, [])]"/>
+      <field name="name">My Orders Awaiting Approval</field>
+      <field name="parent_id" ref="phase3_ho_ps.menu_my_sales"/>
+      <field name="sequence">30</field>
+      <field name="web_icon" eval="False"/>
+    </record>
+  </data>
+</openerp>
